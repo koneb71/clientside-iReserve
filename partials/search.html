@@ -1,0 +1,148 @@
+<div class="row nav-header">
+    <div class="col-lg-3 col-md-12">
+        <a href="?#/">
+            <h1 class="text-center">iReserve </h1>
+        </a></div>
+</div>
+<div class="row top-border">
+    <div class="col-lg-3 col-md-12"></div>
+    <div class="col-lg-6 col-md-12">
+        <form class="search-form" ng-submit="search()">
+            <div class="input-group">
+                <div class="input-group-addon"><span><i class="glyphicon glyphicon-search"></i></span></div>
+                <input class="form-control" type="text" placeholder="e.g. Iligan City" ng-model="searchForm.location">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="button">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" placeholder="   Check In Date"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker2'>
+                        <input type='text' class="form-control" placeholder="   Check Out Date"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker2').datetimepicker();
+                    });
+                </script>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="form-group">
+                    <select class="form-control" ng-model="searchForm.room_name"
+                            ng-init="searchForm.room_name = 'Single'">
+                        <option value="Single">Single Room</option>
+                        <option value="Double">Double Room</option>
+                        <option value="Family">Family Room</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-12"></div>
+</div>
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="container">
+            <div class="row box-header with-border">
+                <div class="col-lg-3 col-md-12" style="padding-top: 30px;">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Filter </h3></div>
+                        <div class="panel-body filter_height">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="well"><span> </span>
+                                        <h6 style="font-size: 15px">Search Property Name</h6>
+                                        <div class="form-group">
+                                            <input type="text" value="" placeholder="e.g. Seda Hotel"
+                                                   class="form-control" ng-model="searchForm.hotel_name">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <h6>Price Range</h6>
+                            <input id="range_1" type="number" name="range_1" class="irs-hidden-input"
+                                   readonly="" ng-model="price">
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(function () {
+
+                        $("#range_1").ionRangeSlider({
+                            hide_min_max: true,
+                            keyboard: true,
+                            min: 500,
+                            max: 30000,
+                            type: 'single',
+                            step: 1,
+                            prefix: "$",
+                            grid: true
+                        });
+
+                    });
+
+                </script>
+                <div class="col-lg-9 col-md-12">
+                    <div class="offer-grids" ng-controller="searchController">
+                        <div class="col-md-12 offer-grid">
+                            <div class="offer-grid1">
+                                <div ng-repeat="res in results | filter: searchForm.location | filter: searchForm.hotel_name | filter: searchForm.room_name | filter: price">
+                                    <h4><a href="#">{{ res.hotel_name }}</a>
+                                        <p style="color: black; font-size: 15px; text-indent: 1em">{{ res.address }}</p>
+                                    </h4>
+
+                                    <div class="offer1">
+                                        <div class="offer-left">
+                                            <a href="#" class="mask"><img
+                                                    src="http://director.cl/wp-content/uploads/2015/09/hotel.jpg"
+                                                    class="img-responsive zoom-img" alt=""/></a>
+                                        </div>
+                                        <div class="offer-right">
+                                            <h5><label>₱</label> {{res.cost}} per night
+                                                <a href="#" class="btn btn-lg btn-success">Reserve Now!</a>
+                                            </h5>
+                                            <div class="row">
+                                                <div class="col-md-6">
+
+                                                </div>
+                                                <div class="col-md-6"></div>
+                                            </div>
+                                            <a href="#" class="button1">more details</a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

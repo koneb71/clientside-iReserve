@@ -1,0 +1,29 @@
+<div class="login" style="background-color: rgb(118, 144, 64)">
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="padding-top: 1%">
+            <div class="login-form" ng-submit="login()">
+                <h3 style="color: black">Login</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control login-field" value="" placeholder="Enter your name"
+                           id="login-name" ng-model="loginForm.surname">
+                    <label class="login-field-icon fui-user" for="login-name"></label>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control login-field" value="" placeholder="Password"
+                           id="login-pass" ng-model="loginForm.password">
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="disabled">Log in</button>
+                <a class="login-link" href="#">Lost your password?</a>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+</div>
