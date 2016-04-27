@@ -20,7 +20,7 @@ angular.module('myApp').factory('AuthService',
                 var deferred = $q.defer();
 
                 // send a post request to the server
-                $http.post('http://127.0.0.1:5000/api/v1.0/search/', {'location': location})
+                $http.post('http://api-teamireserve.rhcloud.com/api/v1.0/search/', {'location': location})
                     // handle success
                     .success(function (data) {
                         deferred.resolve(data);
@@ -42,7 +42,7 @@ angular.module('myApp').factory('AuthService',
                 var deferred = $q.defer();
 
                 // send a post request to the server
-                $http.post('/api/v1.0/hotel_personnel/login', {lname: lname, password: password})
+                $http.post('api-teamireserve.rhcloud.com/api/v1.0/hotel_personnel/login', {lname: lname, password: password})
                     // handle success
                     .success(function (data, status) {
                         if (status === 200 && data.result) {
@@ -70,7 +70,7 @@ angular.module('myApp').factory('AuthService',
                 var deferred = $q.defer();
 
                 // send a get request to the server
-                $http.get('/api/v1.0/hotel_personnel/logout')
+                $http.get('api-teamireserve.rhcloud.com/api/v1.0/hotel_personnel/logout')
                     // handle success
                     .success(function (data) {
                         user = false;
@@ -93,7 +93,7 @@ angular.module('myApp').factory('AuthService',
                 var deferred = $q.defer();
 
                 // send a post request to the server
-                $http.post('/api/v1.0/hotel_personnel/register', {password: password, fname: fname, mname: mname, lname: lname})
+                $http.post('api-teamireserve.rhcloud.com/api/v1.0/hotel_personnel/register', {password: password, fname: fname, mname: mname, lname: lname})
                     // handle success
                     .success(function (data, status) {
                         if (status === 200 && data.result) {
@@ -117,7 +117,7 @@ angular.module('myApp').factory('AuthService',
             }
 
             function getUserStatus() {
-                $http.get('/api/status')
+                $http.get('api-teamireserve.rhcloud.com/api/status')
                     // handle success
                     .success(function (data) {
                         if (data.status) {
